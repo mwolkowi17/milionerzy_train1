@@ -33,9 +33,9 @@ export class GameStart extends Scene {
       targets: this.przycisk_start,
       y: 360,
       duration: 3000,
-      alpha: { value: 1, duration: 1000, ease: "Power1" },
+      alpha: { value: 1, duration: 500, ease: "Power1" },
       ease: "cubic.out",
-      delay: 1000,
+      delay: 200,
     });
 
     this.przycisk_start.on("pointerdown", () => {
