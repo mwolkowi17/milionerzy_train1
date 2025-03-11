@@ -40,6 +40,7 @@ export class GameStart extends Scene {
 
     this.przycisk_start.on("pointerdown", () => {
       this.scene.start("GameScene1");
+      document.body.style.cursor = "initial";
     });
   }
 }

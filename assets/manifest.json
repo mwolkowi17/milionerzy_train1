@@ -1,11 +1,18 @@
 {
   "assetRoot": "assets",
-  "totalSize": 950867,
+  "totalSize": 1154927,
   "assets": {
     "image": {
       "phaser_logo": { "file": "phaser_logo.png", "size": 377788 },
       "plansza_startowa": { "file": "plansza_startowa1.png", "size": 544883 },
-      "przycisk_start": { "file": "przycisk1.png", "size": 28196 }
+      "przycisk_start": { "file": "przycisk1.png", "size": 28196 },
+      "pytanie1": { "file": "przycisk_pytanie.png", "size": 48950 },
+      "odpowiedz1": { "file": "odpowiedz1.png", "size": 24130 },
+      "odpowiedz2": { "file": "odpowiedz2.png", "size": 23290 },
+      "odpowiedz3": { "file": "odpowiedz3.png", "size": 25572 },
+      "odpowiedz4": { "file": "odpowiedz4.png", "size": 23647 },
+      "play_again": { "file": "play_again.png", "size": 15543 },
+      "punktacja": { "file": "punktacja_1.png", "size": 58471 }
     }
   }
 }
