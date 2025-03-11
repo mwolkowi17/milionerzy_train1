@@ -1,1 +1,11 @@
-{"assetRoot":"assets","totalSize":377788,"assets":{"image":{"phaser_logo":{"file":"phaser_logo.png","size":377788}}}}
+{
+  "assetRoot": "assets",
+  "totalSize": 950867,
+  "assets": {
+    "image": {
+      "phaser_logo": { "file": "phaser_logo.png", "size": 377788 },
+      "plansza_startowa": { "file": "plansza_startowa1.png", "size": 544883 },
+      "przycisk_start": { "file": "przycisk1.png", "size": 28196 }
+    }
+  }
+}
