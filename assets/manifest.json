@@ -17,7 +17,9 @@
       "odpowiedz4b": { "file": "odpowiedz4b.png", "size": 23647 },
       "play_again": { "file": "play_again.png", "size": 15543 },
       "play_againb": { "file": "play_again_b.png", "size": 15543 },
-      "punktacja": { "file": "punktacja_1.png", "size": 58471 }
+      "punktacja": { "file": "punktacja_1.png", "size": 58471 },
+      "odpowiedz_dobra": { "file": "answer_good1.png", "size": 110808 },
+      "odpowiedz_zla": { "file": "answer_bad1.png", "size": 107274 }
     }
   }
 }

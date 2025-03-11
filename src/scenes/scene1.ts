@@ -72,6 +72,14 @@ export class Game1 extends Scene {
       document.body.style.cursor = "initial";
     });
 
+    this.odpowiedz1.on("pointerdown", () => {
+      this.add.image(630, 260, "odpowiedz_dobra");
+      this.odpowiedz1.setTint(0x3cb371);
+      setTimeout(() => {
+        this.scene.start("GameSceneStart");
+      }, 1000);
+    });
+
     this.odpowiedz2.on("pointerover", function (event) {
       this.setTint(0x8080ff);
       document.body.style.cursor = "pointer";
