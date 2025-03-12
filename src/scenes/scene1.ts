@@ -8,6 +8,9 @@ export class Game1 extends Scene {
   odpowiedz4: any;
   play_again: any;
   punktacja: any;
+  ramka_punkty: any;
+  timedEvent: any;
+  text: any;
 
   constructor() {
     super({
@@ -48,6 +51,11 @@ export class Game1 extends Scene {
       .setAlpha(0)
       .setInteractive();
 
+    this.ramka_punkty = this.add.image(1105, 600, "ramka_punkty1").setAlpha(0);
+
+    this.text = this.add.text(1000, 60, "text");
+    this.timedEvent = this.time.delayedCall(11000, this.onEvent, [], this);
+
     // assets tween alpha animation added
     this.tweens.add({
       targets: [
@@ -58,6 +66,7 @@ export class Game1 extends Scene {
         this.odpowiedz4,
         this.play_again,
         this.punktacja,
+        this.ramka_punkty,
       ],
       alpha: { value: 1, duration: 1000, ease: "Power1" },
     });
@@ -81,6 +90,7 @@ export class Game1 extends Scene {
       this.odpowiedz2.disableInteractive();
       this.odpowiedz3.disableInteractive();
       this.odpowiedz4.disableInteractive();
+      this.timedEvent.paused = !this.timedEvent.paused;
 
       setTimeout(() => {
         this.scene.start("GameSceneStart");
@@ -97,6 +107,20 @@ export class Game1 extends Scene {
       document.body.style.cursor = "initial";
     });
 
+    this.odpowiedz2.on("pointerdown", () => {
+      this.add.image(640, 360, "odpowiedz_zla");
+      this.odpowiedz2.setTint(0xff3333);
+      this.odpowiedz1.disableInteractive();
+      this.odpowiedz2.disableInteractive();
+      this.odpowiedz3.disableInteractive();
+      this.odpowiedz4.disableInteractive();
+      this.timedEvent.paused = !this.timedEvent.paused;
+
+      setTimeout(() => {
+        this.scene.start("GameSceneStart");
+      }, 2000);
+    });
+
     this.odpowiedz3.on("pointerover", function (event) {
       this.setTint(0x8080ff);
       document.body.style.cursor = "pointer";
@@ -107,6 +131,20 @@ export class Game1 extends Scene {
       document.body.style.cursor = "initial";
     });
 
+    this.odpowiedz3.on("pointerdown", () => {
+      this.add.image(640, 360, "odpowiedz_zla");
+      this.odpowiedz3.setTint(0xff3333);
+      this.odpowiedz1.disableInteractive();
+      this.odpowiedz2.disableInteractive();
+      this.odpowiedz3.disableInteractive();
+      this.odpowiedz4.disableInteractive();
+      this.timedEvent.paused = !this.timedEvent.paused;
+
+      setTimeout(() => {
+        this.scene.start("GameSceneStart");
+      }, 2000);
+    });
+
     this.odpowiedz4.on("pointerover", function (event) {
       this.setTint(0x8080ff);
       document.body.style.cursor = "pointer";
@@ -115,6 +153,20 @@ export class Game1 extends Scene {
     this.odpowiedz4.on("pointerout", function (event) {
       this.clearTint();
       document.body.style.cursor = "initial";
+    });
+
+    this.odpowiedz4.on("pointerdown", () => {
+      this.add.image(640, 360, "odpowiedz_zla");
+      this.odpowiedz4.setTint(0xff3333);
+      this.odpowiedz1.disableInteractive();
+      this.odpowiedz2.disableInteractive();
+      this.odpowiedz3.disableInteractive();
+      this.odpowiedz4.disableInteractive();
+      this.timedEvent.paused = !this.timedEvent.paused;
+
+      setTimeout(() => {
+        this.scene.start("GameSceneStart");
+      }, 2000);
     });
 
     this.play_again.on("pointerover", function (event) {
@@ -131,5 +183,41 @@ export class Game1 extends Scene {
       this.scene.start("GameSceneStart");
       document.body.style.cursor = "initial";
     });
+  }
+
+  update() {
+    // sposoby wyświetlania czasu
+
+    // this.text.setText(
+    //   `Event.progress: ${this.timedEvent.getProgress().toString().substr(0, 4)}`
+    // );
+
+    // this.text.setText(
+    //   `Czas: ${this.timedEvent.getProgress().toString().substr(2, 1)}`
+    // );
+
+    // this.text.setText(
+    //   `Czas: ${this.timedEvent.getElapsedSeconds().toString().substr(0, 1)}`
+    // );
+
+    if (this.timedEvent.getRemainingSeconds() >= 10) {
+      this.text.setText(
+        `Czas na odpowiedź: ${this.timedEvent
+          .getRemainingSeconds()
+          .toString()
+          .substr(0, 2)}`
+      );
+    } else {
+      this.text.setText(
+        `Czas na odpowiedź: ${this.timedEvent
+          .getRemainingSeconds()
+          .toString()
+          .substr(0, 1)}`
+      );
+    }
+  }
+
+  onEvent() {
+    this.scene.start("GameSceneStart");
   }
 }

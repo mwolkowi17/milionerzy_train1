@@ -19,7 +19,8 @@
       "play_againb": { "file": "play_again_b.png", "size": 15543 },
       "punktacja": { "file": "punktacja_1.png", "size": 58471 },
       "odpowiedz_dobra": { "file": "answer_good2.png", "size": 110808 },
-      "odpowiedz_zla": { "file": "answer_bad1.png", "size": 107274 }
+      "odpowiedz_zla": { "file": "answer_bad2.png", "size": 107274 },
+      "ramka_punkty1": { "file": "ramka_punkty1.png", "size": 240 }
     }
   }
 }
