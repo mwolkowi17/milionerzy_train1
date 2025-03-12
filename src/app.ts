@@ -3,11 +3,12 @@ import Boot from "./scenes/boot";
 import Preload from "./scenes/preload";
 import { GameStart as GameSceneStart } from "./scenes/game_start";
 import { Game1 as GameScene1 } from "./scenes/scene1";
+import { Once_again as OnceAgain } from "./scenes/once_again";
 
 const config: Phaser.Types.Core.GameConfig = {
   title: "Demo Game",
 
-  scene: [Boot, Preload, GameSceneStart, GameScene1],
+  scene: [Boot, Preload, GameSceneStart, GameScene1, OnceAgain],
   backgroundColor: "#333",
   scale: {
     mode: Phaser.Scale.FIT,

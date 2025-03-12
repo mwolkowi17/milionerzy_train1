@@ -20,7 +20,9 @@
       "punktacja": { "file": "punktacja_1.png", "size": 58471 },
       "odpowiedz_dobra": { "file": "answer_good2.png", "size": 110808 },
       "odpowiedz_zla": { "file": "answer_bad2.png", "size": 107274 },
-      "ramka_punkty1": { "file": "ramka_punkty1.png", "size": 240 }
+      "ramka_punkty1": { "file": "ramka_punkty1.png", "size": 240 },
+      "not_realy": { "file": "not_realy1.png", "size": 114488 },
+      "not_realy_play": { "file": "start_again1.png", "size": 21638 }
     }
   }
 }

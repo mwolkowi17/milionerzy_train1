@@ -1,7 +1,7 @@
 import { Scene } from "phaser";
 
 export class GameStart extends Scene {
-  przycisk_start: any;
+  przycisk_start: Phaser.GameObjects.Image;
 
   constructor() {
     super({
