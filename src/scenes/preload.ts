@@ -49,6 +49,6 @@ export default class Preload extends Scene {
 
   create(): void {
     // this.scene.start("GameSceneStart");
-    this.scene.start("OnceAgain");
+    this.scene.start("GameSceneStart");
   }
 }

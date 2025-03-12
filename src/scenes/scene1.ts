@@ -218,6 +218,6 @@ export class Game1 extends Scene {
   }
 
   onEvent() {
-    this.scene.start("GameSceneStart");
+    this.scene.start("OnceAgain");
   }
 }

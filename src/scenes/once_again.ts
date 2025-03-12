@@ -24,5 +24,21 @@ export class Once_again extends Scene {
       targets: [this.button_start_again, this.plansza_not_realy],
       alpha: { value: 1, duration: 1000, ease: "Power1" },
     });
+
+    // buttons events
+
+    this.button_start_again.on("pointerover", function (event) {
+      this.setTint(0x8080ff);
+      document.body.style.cursor = "pointer";
+    });
+
+    this.button_start_again.on("pointerout", function (event) {
+      this.clearTint();
+      document.body.style.cursor = "initial";
+    });
+
+    this.button_start_again.on("pointerdown", () => {
+      this.scene.start("GameSceneStart");
+    });
   }
 }
