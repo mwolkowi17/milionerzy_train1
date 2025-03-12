@@ -16,9 +16,7 @@ export class Game1 extends Scene {
   }
 
   create(): void {
-    // const image = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'phaser_logo');
-    // image.setOrigin(0.5);
-
+    //adding assets
     this.add.image(640, 360, "plansza_startowa");
     this.pytanie1 = this.add.image(640, 360, "pytanie1").setAlpha(0);
 
@@ -27,6 +25,7 @@ export class Game1 extends Scene {
       .setAlpha(0)
       .setInteractive();
     this.punktacja = this.add.image(640, 360, "punktacja").setAlpha(0);
+
     this.odpowiedz1 = this.add
       .image(240, 535, "odpowiedz1b")
       .setInteractive()
@@ -49,6 +48,7 @@ export class Game1 extends Scene {
       .setAlpha(0)
       .setInteractive();
 
+    // assets tween alpha animation added
     this.tweens.add({
       targets: [
         this.pytanie1,
@@ -62,6 +62,8 @@ export class Game1 extends Scene {
       alpha: { value: 1, duration: 1000, ease: "Power1" },
     });
 
+    // buttons events
+
     this.odpowiedz1.on("pointerover", function (event) {
       this.setTint(0x8080ff);
       document.body.style.cursor = "pointer";
@@ -73,11 +75,16 @@ export class Game1 extends Scene {
     });
 
     this.odpowiedz1.on("pointerdown", () => {
-      this.add.image(630, 260, "odpowiedz_dobra");
+      this.add.image(640, 360, "odpowiedz_dobra");
       this.odpowiedz1.setTint(0x3cb371);
+      this.odpowiedz1.disableInteractive();
+      this.odpowiedz2.disableInteractive();
+      this.odpowiedz3.disableInteractive();
+      this.odpowiedz4.disableInteractive();
+
       setTimeout(() => {
         this.scene.start("GameSceneStart");
-      }, 1000);
+      }, 2000);
     });
 
     this.odpowiedz2.on("pointerover", function (event) {
