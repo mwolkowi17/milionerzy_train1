@@ -1,6 +1,6 @@
 import { Scene } from "phaser";
 
-export class Game1 extends Scene {
+export class Game2 extends Scene {
   pytanie1: any;
   odpowiedz1: any;
   odpowiedz2: any;
@@ -14,14 +14,14 @@ export class Game1 extends Scene {
 
   constructor() {
     super({
-      key: "GameScene1",
+      key: "GameScene2",
     });
   }
 
   create(): void {
     //adding assets
     this.add.image(640, 360, "plansza_startowa");
-    this.pytanie1 = this.add.image(640, 360, "pytanie1").setAlpha(0);
+    this.pytanie1 = this.add.image(640, 360, "teapotmean").setAlpha(0);
 
     this.play_again = this.add
       .image(640, 360, "play_again")
@@ -30,19 +30,19 @@ export class Game1 extends Scene {
     this.punktacja = this.add.image(640, 360, "punktacja").setAlpha(0);
 
     this.odpowiedz1 = this.add
-      .image(240, 535, "odpowiedz1b")
+      .image(240, 535, "filizanka")
       .setInteractive()
       .setAlpha(0);
     this.odpowiedz2 = this.add
-      .image(690, 535, "odpowiedz2b")
+      .image(690, 535, "czajniczek")
       .setAlpha(0)
       .setInteractive();
     this.odpowiedz3 = this.add
-      .image(240, 630, "odpowiedz3b")
+      .image(240, 630, "lyzeczka")
       .setAlpha(0)
       .setInteractive();
     this.odpowiedz4 = this.add
-      .image(690, 630, "odpowiedz4b")
+      .image(690, 630, "zapazacz")
       .setAlpha(0)
       .setInteractive();
 
@@ -51,7 +51,7 @@ export class Game1 extends Scene {
       .setAlpha(0)
       .setInteractive();
 
-    this.ramka_punkty = this.add.image(1105, 600, "ramka_punkty1").setAlpha(0);
+    this.ramka_punkty = this.add.image(1105, 572, "ramka_punkty1").setAlpha(0);
 
     this.text = this.add.text(1000, 60, "text");
     this.timedEvent = this.time.delayedCall(11000, this.onEvent, [], this);
@@ -84,8 +84,8 @@ export class Game1 extends Scene {
     });
 
     this.odpowiedz1.on("pointerdown", () => {
-      this.add.image(640, 360, "odpowiedz_dobra");
-      this.odpowiedz1.setTint(0x3cb371);
+      this.add.image(640, 360, "odpowiedz_zla");
+      this.odpowiedz1.setTint(0xff3333);
       this.odpowiedz1.disableInteractive();
       this.odpowiedz2.disableInteractive();
       this.odpowiedz3.disableInteractive();
@@ -93,7 +93,7 @@ export class Game1 extends Scene {
       this.timedEvent.paused = !this.timedEvent.paused;
 
       setTimeout(() => {
-        this.scene.start("GameScene2");
+        this.scene.start("GameSceneStart");
       }, 2000);
     });
 
@@ -108,8 +108,8 @@ export class Game1 extends Scene {
     });
 
     this.odpowiedz2.on("pointerdown", () => {
-      this.add.image(640, 360, "odpowiedz_zla");
-      this.odpowiedz2.setTint(0xff3333);
+      this.add.image(640, 360, "odpowiedz_dobra");
+      this.odpowiedz2.setTint(0x3cb371);
       this.odpowiedz1.disableInteractive();
       this.odpowiedz2.disableInteractive();
       this.odpowiedz3.disableInteractive();

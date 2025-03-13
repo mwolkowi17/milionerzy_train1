@@ -1,6 +1,6 @@
 {
   "assetRoot": "assets",
-  "totalSize": 1154927,
+  "totalSize": 1887340,
   "assets": {
     "image": {
       "phaser_logo": { "file": "phaser_logo.png", "size": 377788 },
@@ -22,7 +22,13 @@
       "odpowiedz_zla": { "file": "answer_bad2.png", "size": 107274 },
       "ramka_punkty1": { "file": "ramka_punkty1.png", "size": 240 },
       "not_realy": { "file": "not_realy1.png", "size": 114488 },
-      "not_realy_play": { "file": "start_again1.png", "size": 21638 }
+      "not_realy_play": { "file": "start_again1.png", "size": 21638 },
+      "times_up": { "file": "Times_up1.png", "size": 115129 },
+      "czajniczek": { "file": "czajniczek1.png", "size": 26321 },
+      "filizanka": { "file": "filizanka1.png", "size": 24618 },
+      "lyzeczka": { "file": "lyzeczka1.png", "size": 25019 },
+      "zapazacz": { "file": "zapazacz1.png", "size": 26034 },
+      "teapotmean": { "file": "teapotmean1.png", "size": 58138 }
     }
   }
 }
