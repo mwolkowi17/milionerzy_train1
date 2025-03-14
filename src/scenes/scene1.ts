@@ -1,13 +1,13 @@
 import { Scene } from "phaser";
 
 export class Game1 extends Scene {
-  pytanie1: any;
-  odpowiedz1: any;
-  odpowiedz2: any;
-  odpowiedz3: any;
-  odpowiedz4: any;
-  play_again: any;
-  punktacja: any;
+  pytanie1: Phaser.GameObjects.Image;
+  odpowiedz1: Phaser.GameObjects.Image;
+  odpowiedz2: Phaser.GameObjects.Image;
+  odpowiedz3: Phaser.GameObjects.Image;
+  odpowiedz4: Phaser.GameObjects.Image;
+  play_again: Phaser.GameObjects.Image;
+  punktacja: Phaser.GameObjects.Image;
   ramka_punkty: any;
   timedEvent: any;
   text: any;
@@ -73,15 +73,25 @@ export class Game1 extends Scene {
 
     // buttons events
 
-    this.odpowiedz1.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
+    //function proposal for event handling
 
-    this.odpowiedz1.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
-    });
+    function myEvent(button: any) {
+      button.on("pointerover", function (event) {
+        this.setTint(0x8080ff);
+        document.body.style.cursor = "pointer";
+      });
+
+      button.on("pointerout", function (event) {
+        this.clearTint();
+        document.body.style.cursor = "initial";
+      });
+    }
+
+    myEvent(this.odpowiedz1);
+    myEvent(this.odpowiedz2);
+    myEvent(this.odpowiedz3);
+    myEvent(this.odpowiedz4);
+    myEvent(this.play_again);
 
     this.odpowiedz1.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_dobra");
@@ -95,16 +105,6 @@ export class Game1 extends Scene {
       setTimeout(() => {
         this.scene.start("GameScene2");
       }, 2000);
-    });
-
-    this.odpowiedz2.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.odpowiedz2.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
     });
 
     this.odpowiedz2.on("pointerdown", () => {
@@ -121,16 +121,6 @@ export class Game1 extends Scene {
       }, 2000);
     });
 
-    this.odpowiedz3.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.odpowiedz3.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
-    });
-
     this.odpowiedz3.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz3.setTint(0xff3333);
@@ -145,16 +135,6 @@ export class Game1 extends Scene {
       }, 2000);
     });
 
-    this.odpowiedz4.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.odpowiedz4.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
-    });
-
     this.odpowiedz4.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz4.setTint(0xff3333);
@@ -167,16 +147,6 @@ export class Game1 extends Scene {
       setTimeout(() => {
         this.scene.start("GameSceneStart");
       }, 2000);
-    });
-
-    this.play_again.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.play_again.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
     });
 
     this.play_again.on("pointerdown", () => {

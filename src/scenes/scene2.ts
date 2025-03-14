@@ -1,13 +1,13 @@
 import { Scene } from "phaser";
 
 export class Game2 extends Scene {
-  pytanie1: any;
-  odpowiedz1: any;
-  odpowiedz2: any;
-  odpowiedz3: any;
-  odpowiedz4: any;
-  play_again: any;
-  punktacja: any;
+  pytanie1: Phaser.GameObjects.Image;
+  odpowiedz1: Phaser.GameObjects.Image;
+  odpowiedz2: Phaser.GameObjects.Image;
+  odpowiedz3: Phaser.GameObjects.Image;
+  odpowiedz4: Phaser.GameObjects.Image;
+  play_again: Phaser.GameObjects.Image;
+  punktacja: Phaser.GameObjects.Image;
   ramka_punkty: any;
   timedEvent: any;
   text: any;
