@@ -8,9 +8,11 @@ export class Game1 extends Scene {
   odpowiedz4: Phaser.GameObjects.Image;
   play_again: Phaser.GameObjects.Image;
   punktacja: Phaser.GameObjects.Image;
+  odpowiedz_correct: Phaser.GameObjects.Image;
   ramka_punkty: any;
   timedEvent: any;
   text: any;
+  sampleSound: any;
 
   constructor() {
     super({
@@ -18,6 +20,10 @@ export class Game1 extends Scene {
     });
   }
 
+  //preaload audio
+  preload(): void {
+    this.load.audio("sample", "assets/music.mp3");
+  }
   create(): void {
     //adding assets
     this.add.image(640, 360, "plansza_startowa");
@@ -56,6 +62,10 @@ export class Game1 extends Scene {
     this.text = this.add.text(1000, 60, "text");
     this.timedEvent = this.time.delayedCall(11000, this.onEvent, [], this);
 
+    //sound add & play
+    this.sampleSound = this.sound.add("sample", { loop: true });
+    this.sampleSound.play();
+
     // assets tween alpha animation added
     this.tweens.add({
       targets: [
@@ -71,11 +81,13 @@ export class Game1 extends Scene {
       alpha: { value: 1, duration: 1000, ease: "Power1" },
     });
 
+    //correct answer not sure if it's nessesary
+    this.odpowiedz_correct = this.odpowiedz1;
     // buttons events
 
-    //function proposal for event handling
+    //function for event mouse handling
 
-    function myEvent(button: any) {
+    function myEventPoinerOverOut(button: any) {
       button.on("pointerover", function (event) {
         this.setTint(0x8080ff);
         document.body.style.cursor = "pointer";
@@ -87,21 +99,26 @@ export class Game1 extends Scene {
       });
     }
 
-    myEvent(this.odpowiedz1);
-    myEvent(this.odpowiedz2);
-    myEvent(this.odpowiedz3);
-    myEvent(this.odpowiedz4);
-    myEvent(this.play_again);
+    //function after click
 
-    this.odpowiedz1.on("pointerdown", () => {
-      this.add.image(640, 360, "odpowiedz_dobra");
-      this.odpowiedz1.setTint(0x3cb371);
+    const after_click = () => {
       this.odpowiedz1.disableInteractive();
       this.odpowiedz2.disableInteractive();
       this.odpowiedz3.disableInteractive();
       this.odpowiedz4.disableInteractive();
       this.timedEvent.paused = !this.timedEvent.paused;
+    };
 
+    myEventPoinerOverOut(this.odpowiedz1);
+    myEventPoinerOverOut(this.odpowiedz2);
+    myEventPoinerOverOut(this.odpowiedz3);
+    myEventPoinerOverOut(this.odpowiedz4);
+    myEventPoinerOverOut(this.play_again);
+
+    this.odpowiedz1.on("pointerdown", () => {
+      this.add.image(640, 360, "odpowiedz_dobra");
+      this.odpowiedz1.setTint(0x3cb371);
+      after_click();
       setTimeout(() => {
         this.scene.start("GameScene2");
       }, 2000);
@@ -110,13 +127,9 @@ export class Game1 extends Scene {
     this.odpowiedz2.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz2.setTint(0xff3333);
-      this.odpowiedz1.disableInteractive();
-      this.odpowiedz2.disableInteractive();
-      this.odpowiedz3.disableInteractive();
-      this.odpowiedz4.disableInteractive();
-      this.timedEvent.paused = !this.timedEvent.paused;
-
+      after_click();
       setTimeout(() => {
+        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -124,13 +137,9 @@ export class Game1 extends Scene {
     this.odpowiedz3.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz3.setTint(0xff3333);
-      this.odpowiedz1.disableInteractive();
-      this.odpowiedz2.disableInteractive();
-      this.odpowiedz3.disableInteractive();
-      this.odpowiedz4.disableInteractive();
-      this.timedEvent.paused = !this.timedEvent.paused;
-
+      after_click();
       setTimeout(() => {
+        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -138,13 +147,9 @@ export class Game1 extends Scene {
     this.odpowiedz4.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz4.setTint(0xff3333);
-      this.odpowiedz1.disableInteractive();
-      this.odpowiedz2.disableInteractive();
-      this.odpowiedz3.disableInteractive();
-      this.odpowiedz4.disableInteractive();
-      this.timedEvent.paused = !this.timedEvent.paused;
-
+      after_click();
       setTimeout(() => {
+        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
