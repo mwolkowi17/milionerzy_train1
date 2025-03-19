@@ -1,4 +1,5 @@
-import { Scene } from "phaser";
+import { GameObjects, Scene } from "phaser";
+import { Game1 } from "./scene1";
 
 export class Game2 extends Scene {
   pytanie1: Phaser.GameObjects.Image;
@@ -73,113 +74,78 @@ export class Game2 extends Scene {
 
     // buttons events
 
-    this.odpowiedz1.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
+    //function for event mouse handling
 
-    this.odpowiedz1.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
-    });
+    function myEventPoinerOverOut(button: any) {
+      button.on("pointerover", function (event) {
+        this.setTint(0x8080ff);
+        document.body.style.cursor = "pointer";
+      });
 
-    this.odpowiedz1.on("pointerdown", () => {
-      this.add.image(640, 360, "odpowiedz_zla");
-      this.odpowiedz1.setTint(0xff3333);
+      button.on("pointerout", function (event) {
+        this.clearTint();
+        document.body.style.cursor = "initial";
+      });
+    }
+
+    //function after click
+
+    const after_click = () => {
       this.odpowiedz1.disableInteractive();
       this.odpowiedz2.disableInteractive();
       this.odpowiedz3.disableInteractive();
       this.odpowiedz4.disableInteractive();
       this.timedEvent.paused = !this.timedEvent.paused;
+    };
+
+    myEventPoinerOverOut(this.odpowiedz1);
+    myEventPoinerOverOut(this.odpowiedz2);
+    myEventPoinerOverOut(this.odpowiedz3);
+    myEventPoinerOverOut(this.odpowiedz4);
+    myEventPoinerOverOut(this.play_again);
+
+    this.odpowiedz1.on("pointerdown", () => {
+      this.add.image(640, 360, "odpowiedz_zla");
+      this.odpowiedz1.setTint(0xff3333);
+      after_click();
 
       setTimeout(() => {
         this.scene.start("GameSceneStart");
       }, 2000);
-    });
-
-    this.odpowiedz2.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.odpowiedz2.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
     });
 
     this.odpowiedz2.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_dobra");
       this.odpowiedz2.setTint(0x3cb371);
-      this.odpowiedz1.disableInteractive();
-      this.odpowiedz2.disableInteractive();
-      this.odpowiedz3.disableInteractive();
-      this.odpowiedz4.disableInteractive();
-      this.timedEvent.paused = !this.timedEvent.paused;
+      after_click();
 
       setTimeout(() => {
         this.scene.start("GameSceneStart");
       }, 2000);
-    });
-
-    this.odpowiedz3.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.odpowiedz3.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
     });
 
     this.odpowiedz3.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz3.setTint(0xff3333);
-      this.odpowiedz1.disableInteractive();
-      this.odpowiedz2.disableInteractive();
-      this.odpowiedz3.disableInteractive();
-      this.odpowiedz4.disableInteractive();
-      this.timedEvent.paused = !this.timedEvent.paused;
+      after_click();
 
       setTimeout(() => {
         this.scene.start("GameSceneStart");
       }, 2000);
-    });
-
-    this.odpowiedz4.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.odpowiedz4.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
     });
 
     this.odpowiedz4.on("pointerdown", () => {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz4.setTint(0xff3333);
-      this.odpowiedz1.disableInteractive();
-      this.odpowiedz2.disableInteractive();
-      this.odpowiedz3.disableInteractive();
-      this.odpowiedz4.disableInteractive();
-      this.timedEvent.paused = !this.timedEvent.paused;
+      after_click();
 
       setTimeout(() => {
         this.scene.start("GameSceneStart");
       }, 2000);
     });
 
-    this.play_again.on("pointerover", function (event) {
-      this.setTint(0x8080ff);
-      document.body.style.cursor = "pointer";
-    });
-
-    this.play_again.on("pointerout", function (event) {
-      this.clearTint();
-      document.body.style.cursor = "initial";
-    });
-
     this.play_again.on("pointerdown", () => {
+      this.sound.stopByKey("sample");
       this.scene.start("GameSceneStart");
       document.body.style.cursor = "initial";
     });
@@ -218,6 +184,7 @@ export class Game2 extends Scene {
   }
 
   onEvent() {
+    this.sound.stopByKey("sample");
     this.scene.start("TimesUp");
   }
 }

@@ -129,7 +129,6 @@ export class Game1 extends Scene {
       this.odpowiedz2.setTint(0xff3333);
       after_click();
       setTimeout(() => {
-        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -139,7 +138,6 @@ export class Game1 extends Scene {
       this.odpowiedz3.setTint(0xff3333);
       after_click();
       setTimeout(() => {
-        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -149,12 +147,12 @@ export class Game1 extends Scene {
       this.odpowiedz4.setTint(0xff3333);
       after_click();
       setTimeout(() => {
-        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
 
     this.play_again.on("pointerdown", () => {
+      this.sampleSound.stop();
       this.scene.start("GameSceneStart");
       document.body.style.cursor = "initial";
     });
@@ -193,6 +191,7 @@ export class Game1 extends Scene {
   }
 
   onEvent() {
+    this.sound.stopByKey("sample");
     this.scene.start("TimesUp");
   }
 }
