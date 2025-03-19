@@ -108,8 +108,9 @@ export class Game2 extends Scene {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz1.setTint(0xff3333);
       after_click();
-
+      this.sound.play("loose");
       setTimeout(() => {
+        this.sound.stopByKey("sample");
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -118,6 +119,7 @@ export class Game2 extends Scene {
       this.add.image(640, 360, "odpowiedz_dobra");
       this.odpowiedz2.setTint(0x3cb371);
       after_click();
+      this.sound.play("win");
 
       setTimeout(() => {
         this.scene.start("GameSceneStart");
@@ -128,8 +130,9 @@ export class Game2 extends Scene {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz3.setTint(0xff3333);
       after_click();
-
+      this.sound.play("loose");
       setTimeout(() => {
+        this.sound.stopByKey("sample");
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -138,8 +141,9 @@ export class Game2 extends Scene {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz4.setTint(0xff3333);
       after_click();
-
+      this.sound.play("loose");
       setTimeout(() => {
+        this.sound.stopByKey("sample");
         this.scene.start("GameSceneStart");
       }, 2000);
     });

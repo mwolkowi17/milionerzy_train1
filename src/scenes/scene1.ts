@@ -13,6 +13,8 @@ export class Game1 extends Scene {
   timedEvent: any;
   text: any;
   sampleSound: any;
+  winSound: any;
+  looseSound: any;
 
   constructor() {
     super({
@@ -23,6 +25,11 @@ export class Game1 extends Scene {
   //preaload audio
   preload(): void {
     this.load.audio("sample", "assets/music.mp3");
+    this.load.audio("win", "assets/075747_inception-horn-victory-82997.mp3");
+    this.load.audio(
+      "loose",
+      "assets/8-bit-video-game-fail-version-2-145478.mp3"
+    );
   }
   create(): void {
     //adding assets
@@ -64,6 +71,8 @@ export class Game1 extends Scene {
 
     //sound add & play
     this.sampleSound = this.sound.add("sample", { loop: true });
+    this.winSound = this.sound.add("win", { loop: false });
+    this.looseSound = this.sound.add("loose", { loop: false });
     this.sampleSound.play();
 
     // assets tween alpha animation added
@@ -119,6 +128,7 @@ export class Game1 extends Scene {
       this.add.image(640, 360, "odpowiedz_dobra");
       this.odpowiedz1.setTint(0x3cb371);
       after_click();
+      this.winSound.play();
       setTimeout(() => {
         this.scene.start("GameScene2");
       }, 2000);
@@ -128,7 +138,9 @@ export class Game1 extends Scene {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz2.setTint(0xff3333);
       after_click();
+      this.looseSound.play();
       setTimeout(() => {
+        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -137,7 +149,9 @@ export class Game1 extends Scene {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz3.setTint(0xff3333);
       after_click();
+      this.looseSound.play();
       setTimeout(() => {
+        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });
@@ -146,7 +160,9 @@ export class Game1 extends Scene {
       this.add.image(640, 360, "odpowiedz_zla");
       this.odpowiedz4.setTint(0xff3333);
       after_click();
+      this.looseSound.play();
       setTimeout(() => {
+        this.sampleSound.stop();
         this.scene.start("GameSceneStart");
       }, 2000);
     });

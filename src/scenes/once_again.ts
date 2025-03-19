@@ -38,6 +38,7 @@ export class Once_again extends Scene {
     });
 
     this.button_start_again.on("pointerdown", () => {
+      this.sound.stopByKey("sample");
       this.scene.start("GameSceneStart");
     });
   }
